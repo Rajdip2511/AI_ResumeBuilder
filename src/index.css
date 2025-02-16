@@ -1,0 +1,461 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary-color: #2c5282;
+  --primary-light: #3182ce;
+  --primary-dark: #1a365d;
+  --accent-color: #718096;
+  --success-color: #38a169;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  @apply bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100;
+}
+
+#root {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+@layer base {
+  html {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors duration-200;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors duration-200;
+  }
+
+  .form-input {
+    @apply mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm transition-colors duration-200 dark:bg-gray-800 dark:border-gray-700 dark:text-white;
+  }
+
+  .card {
+    @apply bg-white dark:bg-gray-800 overflow-hidden shadow-sm rounded-lg transition-all duration-200 hover:shadow-md;
+  }
+
+  .card-header {
+    @apply px-4 py-5 sm:px-6 border-b border-gray-200 dark:border-gray-700;
+  }
+
+  .card-body {
+    @apply px-4 py-5 sm:p-6;
+  }
+
+  .animate-fade-in {
+    @apply animate-[fadeIn_0.5s_ease-in-out];
+  }
+
+  .animate-slide-in {
+    @apply animate-[slideIn_0.5s_ease-in-out];
+  }
+}
+
+/* Modern animations and transitions */
+@keyframes gradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes shimmer {
+  0% { background-position: -1000px 0; }
+  100% { background-position: 1000px 0; }
+}
+
+.animate-gradient {
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-pulse-slow {
+  animation: pulse 3s ease-in-out infinite;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.5s ease-out forwards;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+.shimmer {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 1000px 100%;
+  animation: shimmer 2s infinite linear;
+}
+
+/* Interactive elements */
+.hover-scale {
+  transition: transform 0.2s ease-in-out;
+}
+
+.hover-scale:hover {
+  transform: scale(1.02);
+}
+
+.hover-lift {
+  transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+}
+
+.hover-lift:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.hover-glow {
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.hover-glow:hover {
+  box-shadow: 0 0 15px rgba(66, 153, 225, 0.5);
+}
+
+/* Modern form elements */
+.modern-input {
+  @apply transition-all duration-300 ease-in-out;
+  @apply border-2 border-gray-300 focus:border-blue-500;
+  @apply rounded-lg shadow-sm;
+  @apply hover:shadow-md focus:shadow-lg;
+}
+
+.modern-input:focus {
+  @apply outline-none ring-2 ring-blue-500 ring-opacity-50;
+  transform: translateY(-1px);
+}
+
+.modern-button {
+  @apply transition-all duration-300 ease-in-out;
+  @apply transform hover:-translate-y-1 hover:shadow-lg;
+  @apply active:scale-95;
+}
+
+/* Card animations */
+.card-hover {
+  @apply transition-all duration-300 ease-in-out;
+  @apply hover:shadow-xl hover:-translate-y-2;
+  @apply dark:hover:shadow-2xl dark:hover:shadow-blue-500/20;
+}
+
+/* Gradient backgrounds */
+.gradient-border {
+  position: relative;
+}
+
+.gradient-border::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, #12c2e9, #c471ed, #f64f59);
+  border-radius: inherit;
+  z-index: -1;
+  animation: gradient 15s ease infinite;
+  background-size: 400% 400%;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-gray-100 dark:bg-gray-800;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-gray-300 dark:bg-gray-600;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-gray-400 dark:bg-gray-500;
+}
+
+/* Loading animations */
+.loading-shimmer {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.1) 50%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite linear;
+}
+
+/* Responsive design helpers */
+@media (max-width: 640px) {
+  .animate-on-mobile {
+    animation: none;
+  }
+}
+
+/* Dark mode enhancements */
+.dark .gradient-border::before {
+  opacity: 0.8;
+}
+
+.dark .hover-glow:hover {
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+}
+
+/* Professional Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(10px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes subtleFloat {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
+  100% { transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.4s ease-out forwards;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.3s ease-out forwards;
+}
+
+.animate-float {
+  animation: subtleFloat 3s ease-in-out infinite;
+}
+
+/* Professional Form Elements */
+.modern-input {
+  @apply transition-all duration-200;
+  @apply border border-gray-300 focus:border-primary-600;
+  @apply rounded-md shadow-sm;
+  @apply bg-white dark:bg-gray-800;
+  @apply text-gray-900 dark:text-gray-100;
+}
+
+.modern-input:focus {
+  @apply outline-none ring-1 ring-primary-500 ring-opacity-50;
+  @apply border-primary-500;
+}
+
+.modern-button {
+  @apply transition-all duration-200;
+  @apply shadow-sm hover:shadow-md;
+  @apply transform hover:-translate-y-0.5;
+  @apply bg-primary-600 hover:bg-primary-700;
+  @apply text-white font-medium;
+}
+
+/* Card Styling */
+.card-hover {
+  @apply transition-all duration-200;
+  @apply hover:shadow-lg;
+  @apply transform hover:-translate-y-1;
+  @apply bg-white dark:bg-gray-800;
+  @apply border border-gray-200 dark:border-gray-700;
+}
+
+/* Professional Borders */
+.professional-border {
+  position: relative;
+  border: 1px solid #e2e8f0;
+  transition: all 0.2s ease;
+}
+
+.professional-border:hover {
+  border-color: var(--primary-color);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+/* Section Headers */
+.section-header {
+  @apply text-lg font-semibold text-gray-900 dark:text-gray-100;
+  @apply border-b border-gray-200 dark:border-gray-700;
+  @apply pb-2 mb-4;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e0;
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a0aec0;
+}
+
+/* Professional Loading State */
+.loading-pulse {
+  @apply animate-pulse;
+  @apply bg-gray-200 dark:bg-gray-700;
+  @apply rounded-md;
+}
+
+/* Dark Mode Refinements */
+.dark .professional-border {
+  border-color: #2d3748;
+}
+
+.dark .professional-border:hover {
+  border-color: var(--primary-light);
+  box-shadow: 0 4px 12px rgba(49, 130, 206, 0.1);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 640px) {
+  .card-hover {
+    transform: none !important;
+  }
+  
+  .modern-button:hover {
+    transform: none !important;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes subtleFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-2px);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.5s ease-out;
+}
+
+.animate-subtle-float {
+  animation: subtleFloat 3s ease-in-out infinite;
+}
+
+.modern-input {
+  @apply block w-full rounded-md border-gray-300 shadow-sm focus:border-primary-500 focus:ring-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:border-primary-400 dark:focus:ring-primary-400 transition-colors duration-200;
+}
+
+.modern-button {
+  @apply transition-all duration-200 ease-in-out;
+}
+
+.modern-button:hover {
+  @apply transform;
+}
+
+.professional-border {
+  @apply border border-gray-200 dark:border-gray-700;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  transition: box-shadow 0.2s ease-in-out;
+}
+
+.professional-border:hover {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.section-header {
+  @apply text-lg font-medium text-gray-900 dark:text-gray-100 mb-4;
+}
+
+/* Loading state styles */
+.loading-shimmer {
+  @apply animate-pulse bg-gray-200 dark:bg-gray-700;
+}
+
+/* Dark mode enhancements */
+.dark .professional-border {
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.3), 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+}
+
+.dark .professional-border:hover {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+} 
